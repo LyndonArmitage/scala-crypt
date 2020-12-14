@@ -48,6 +48,24 @@ object CipherUtils {
       }
       buffer.toIndexedSeq
     }
+
+    def prettyPrintCipher(
+        groupSize: Int,
+        groupsPerLine: Int,
+        paddingFunction: Int => Option[Char] = _ => None
+    ): Unit = {
+      val groups = string.asGrid(groupSize, paddingFunction)
+      groups.zipWithIndex.foreach {
+        case (str, i) =>
+          print(str)
+          if ((i + 1) % groupsPerLine == 0) {
+            println()
+          } else {
+            print('\t')
+          }
+      }
+    }
+
   }
 
 }

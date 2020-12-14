@@ -83,4 +83,10 @@ class CipherUtilsTest extends AnyFunSuite {
     assert(grid == expected)
   }
 
+  test("prettyPrint") {
+    val text = "This is my test message for writing out data"
+      .prepareForCipher()
+    text.prettyPrintCipher(2, 6)
+  }
+
 }
