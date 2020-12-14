@@ -1,5 +1,4 @@
 package codes.lyndon.crypt
-package codes.lyndon.crypt
 
 import scala.collection.mutable
 import codes.lyndon.crypt.CipherUtils._

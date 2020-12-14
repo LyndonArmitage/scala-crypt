@@ -1,5 +1,4 @@
 package codes.lyndon.crypt
-package codes.lyndon.crypt
 
 case class SimpleSubstitution(
     charMap: Map[Char, Char]

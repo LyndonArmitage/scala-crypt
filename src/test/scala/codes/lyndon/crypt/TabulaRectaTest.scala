@@ -1,5 +1,4 @@
 package codes.lyndon.crypt
-package codes.lyndon.crypt
 
 import org.scalatest.funsuite.AnyFunSuite
 
