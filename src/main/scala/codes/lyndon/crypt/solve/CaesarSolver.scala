@@ -16,7 +16,7 @@ object CaesarSolver {
   def solveLikely(
       solutions: Seq[Solution],
       dictionaryFile: File,
-      minWordLength: Int = 3
+      minWordLength: Int
   ): Seq[SolutionWithWordCount] = {
     val dict = DictionaryHelper(dictionaryFile, minWordLength)
     solutions.map { solution =>
@@ -49,12 +49,17 @@ object CaesarSolver {
 
   def main(args: Array[String]): Unit = {
     val encoded = CaesarCipher(12).encode(
-      "This is my message let's decrypt".prepareForCipher()
+      "This is my message let's decrypt. I am the most intelligent person ever! A brain the size of a planet!"
+        .prepareForCipher()
     )
 
     val solutions = solve(encoded)
-    solveLikely(solutions, new File("/home/lyndon/google-10000-english.txt"))
-//    solveLikely(solutions, new File("/home/lyndon/words_alpha.txt"))
+    solveLikely(
+      solutions,
+      new File("/home/lyndon/google-10000-english.txt"),
+      3
+    )
+    //    solveLikely(solutions, new File("/home/lyndon/words_alpha.txt"))
       .filter(_.wordCount > 0)
       .foreach { sol =>
         println(sol)

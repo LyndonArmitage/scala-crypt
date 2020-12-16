@@ -38,10 +38,39 @@ class CipherGroupTest extends AnyFunSuite {
 
   test("Complex") {
 
-    val msg = "This is my secret message that nobody else can read".prepareForCipher()
+    val msg =
+      "This is my secret message that nobody else can read".prepareForCipher()
     val vKey = "The quick brown fox jumps over the lazy dog".prepareForCipher()
 
     val group = CipherGroup(
+      ExpandingSubstitutionCipher(
+        ('A', "QW"),
+        ('B', "AS"),
+        ('C', "ZX"),
+        ('D', "ER"),
+        ('E', "QO"),
+        ('F', "CV"),
+        ('G', "TY"),
+        ('H', "FK"),
+        ('I', "NB"),
+        ('J', "UI"),
+        ('K', "JK"),
+        ('L', "BN"),
+        ('M', "OP"),
+        ('N', "ZI"),
+        ('O', "WK"),
+        ('P', "FM"),
+        ('Q', "RR"),
+        ('R', "ED"),
+        ('S', "DF"),
+        ('T', "LM"),
+        ('U', "XB"),
+        ('V', "GH"),
+        ('W', "MJ"),
+        ('X', "MN"),
+        ('Y', "TR"),
+        ('Z', "PO")
+      ),
       VigenereCipher(vKey),
       SimpleSubstitution(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -51,7 +80,7 @@ class CipherGroupTest extends AnyFunSuite {
       SimpleSubstitution(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "ZXCVBNMASDFGHJKLQWERTYUIOP"
-      ),
+      )
     )
 
     val encoded = group.encode(msg)
@@ -61,7 +90,9 @@ class CipherGroupTest extends AnyFunSuite {
     println(encoded)
     println(decoded)
 
-    println(encoded.asGrid(5).mkString("\t"))
+    encoded.prettyPrintCipher(5, 6)
+
+    assert(decoded.startsWith(msg), "Message should be in decoded")
   }
 
 }
