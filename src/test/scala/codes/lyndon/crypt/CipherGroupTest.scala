@@ -90,7 +90,7 @@ class CipherGroupTest extends AnyFunSuite {
     println(encoded)
     println(decoded)
 
-    encoded.prettyPrintCipher(5, 6)
+    encoded.prettyPrintCipher(1, 5,  spacing = " ")
 
     assert(decoded.startsWith(msg), "Message should be in decoded")
   }

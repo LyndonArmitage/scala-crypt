@@ -52,6 +52,7 @@ object CipherUtils {
     def prettyPrintCipher(
         groupSize: Int,
         groupsPerLine: Int,
+        spacing: String = "\t",
         paddingFunction: Int => Option[Char] = _ => None
     ): Unit = {
       val groups = string.asGrid(groupSize, paddingFunction)
@@ -61,7 +62,7 @@ object CipherUtils {
           if ((i + 1) % groupsPerLine == 0) {
             println()
           } else {
-            print('\t')
+            print(spacing)
           }
       }
     }
